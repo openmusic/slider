@@ -3,7 +3,7 @@
 	// it doesn't seem to be working and I don't get any distinct element at all
 	// or I get an "TypeError: 'type' setter called on an object that does not implement interface HTMLInputElement."
 	// ... so using just HTMLElement for now
-	var proto = Object.create(HTMLInputElement.prototype);
+	var proto = Object.create(HTMLElement.prototype);
 
 	proto.createdCallback = function() {
 	
@@ -21,6 +21,12 @@
 		var self = this;
 		slider.addEventListener('input', function() {
 			updateDisplay(self);
+		});
+
+		Object.defineProperty(this, 'value', {
+			get: function() {
+				return slider.value;
+			}
 		});
 
 	};
