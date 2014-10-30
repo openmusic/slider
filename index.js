@@ -18,15 +18,31 @@
 		this.appendChild(slider);
 		this.appendChild(valueSpan);
 
-		// TODO read potential html attributes and update everything
-		// slider -> display value
- 		// (but should this be in attachedCallback instead?)
-
+		var self = this;
 		slider.addEventListener('input', function() {
-			valueSpan.innerHTML = slider.value;
+			updateDisplay(self);
 		});
 
 	};
+
+	proto.attachedCallback = function() {
+
+		var attrs = this.attributes;
+	
+		for(var i = 0; i < attrs.length; i++) {
+			var attr = attrs[i];
+			// Sending them all to the slider for now;
+			// we might want to send just some in the future
+			this._slider.setAttribute(attr.name, attr.value);
+		}
+
+		updateDisplay(this);
+
+	};
+
+	function updateDisplay(compo) {
+		compo._valueSpan.innerHTML = compo._slider.value;
+	}
 
 	//
 
