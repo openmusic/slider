@@ -25,15 +25,18 @@
 
 	};
 
+	var sliderAttributes = [ 'min', 'max', 'value', 'step' ];
+
 	proto.attachedCallback = function() {
 
 		var attrs = this.attributes;
 	
 		for(var i = 0; i < attrs.length; i++) {
 			var attr = attrs[i];
-			// Sending them all to the slider for now;
-			// we might want to send just some in the future
-			this._slider.setAttribute(attr.name, attr.value);
+			// Just sending sensible attributes to the slider itself
+			if(sliderAttributes.indexOf(attr.name) !== -1) {
+				this._slider.setAttribute(attr.name, attr.value);
+			}
 		}
 
 		updateDisplay(this);
