@@ -26,6 +26,10 @@
 		Object.defineProperty(this, 'value', {
 			get: function() {
 				return slider.value;
+			},
+			set: function(v) {
+				slider.value = v;
+				updateDisplay(self);
 			}
 		});
 
