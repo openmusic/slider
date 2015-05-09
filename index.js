@@ -52,14 +52,26 @@
 	proto.attachedCallback = function() {
 
 		var attrs = this.attributes;
+		var valueIsThere = false;
 	
 		for(var i = 0; i < attrs.length; i++) {
 			var attr = attrs[i];
-			console.log(attr.name, attr.value);
+
+			if(attr.name === 'value') {
+				valueIsThere = true;
+			}
+
 			// Just sending sensible attributes to the slider itself
 			if(sliderAttributes.indexOf(attr.name) !== -1) {
 				this._properties[attr.name] = attr.value;
 			}
+		}
+
+		// If not specified, the default value has to be 
+		// (min + max) / 2 as the normal slider would do as well.
+		if(!valueIsThere) {
+			var calculatedValue = (this._properties.min * 1.0 + this._properties.max * 1.0) / 2.0;
+			this._properties.value = calculatedValue;
 		}
 
 		updateDisplay(this);
