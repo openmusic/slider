@@ -1,6 +1,7 @@
 (function() {
 
 	var setterGetterify = require('setter-getterify');
+	var safeRegisterElement = require('safe-register-element');
 
 	// Ideally it would be better to extend the HTMLInputElement prototype but
 	// it doesn't seem to be working and I don't get any distinct element at all
@@ -88,13 +89,11 @@
 	}
 
 	//
-
+	
 	var component = {};
 	component.prototype = proto;
 	component.register = function(name) {
-		document.registerElement(name, {
-			prototype: proto
-		});
+		safeRegisterElement(name, proto);
 	};
 
 	if(typeof define === 'function' && define.amd) {

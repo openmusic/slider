@@ -1,6 +1,6 @@
 {
   "name": "openmusic-slider",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "a not ultra fancy slider web component, which shows the current value too",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/openmusic/slider",
   "dependencies": {
+    "safe-register-element": "^1.0.0",
     "setter-getterify": "^1.1.0"
   },
   "devDependencies": {
