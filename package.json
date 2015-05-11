@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/openmusic/slider",
   "dependencies": {
-    "safe-register-element": "^1.0.0",
+    "safe-register-element": "^1.0.1",
     "setter-getterify": "^1.1.0"
   },
   "devDependencies": {
