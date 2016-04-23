@@ -13,7 +13,7 @@ npm install openmusic-slider
 ## usage
 
 ```javascript
-require('openmusic-slider')('openmusic-slider');
+require('openmusic-slider').register('openmusic-slider');
 
 var coolSlider = document.createElement('openmusic-slider');
 document.body.appendChild(coolSlider);
